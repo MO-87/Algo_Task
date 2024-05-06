@@ -210,3 +210,12 @@ algorithm max_product_of_three(v, first=0, second=1, third=2, combinations={}):
 
     return curMax
 ```
+## Comparison between all Algo's Time Complexity :
+
+| Algorithm      | Time Complexity     | Description                                                                                                                                                                                                                                                                                     |
+|----------------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| First Algorithm| O(n^3)              | The algorithm utilizes three nested loops iterating through all possible combinations of elements in the input vector `v`. This results in cubic time complexity where 'n' is the size of the input vector.                                                                                      |
+| Second Algorithm| O(n^2)             | This algorithm employs a Bubble Sort implementation to sort the input vector, resulting in quadratic time complexity. The subsequent operations to calculate the maximum product take linear time, thus not significantly contributing to the overall time complexity.              |
+| Third Algorithm| O(3^n)              | The time complexity of this algorithm is exponential, specifically O(3^n), where 'n' is the size of the input vector `v`. This is due to the recursive nature of the algorithm with three recursive calls exploring different combinations at each step, leading to a total of 3^n recursive calls. |
+
+**Best Algorithm:** Second Algorithm (O(n^2))
