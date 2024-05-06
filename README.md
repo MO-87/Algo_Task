@@ -136,7 +136,7 @@ int main() {
 
 ## Pseudo Code for 1st Algo :
 
-```py
+```
 algorithm max_product_of_three(v):
     res = -∞
 
@@ -148,6 +148,26 @@ algorithm max_product_of_three(v):
 
                 if v[i] * v[j] * v[k] > res:
                     res = v[i] * v[j] * v[k]
+
+    return res
+```
+
+## Pseudo Code for 2nd Algo :
+
+```
+algorithm max_product_of_three(v):
+    for i from 0 to v.size() - 1:
+        for j from i+1 to v.size() - 1:
+            if v[i] > v[j]:
+                swap(v[i], v[j])
+
+    firstTwo = v[0] * v[1]
+    lastThree = v[v.size() - 1] * v[v.size() - 2] * v[v.size() - 3]
+
+    if firstTwo * v[v.size() - 1] > lastThree:
+        res = firstTwo * v[v.size() - 1]
+    else:
+        res = lastThree
 
     return res
 ```
