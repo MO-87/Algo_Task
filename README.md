@@ -171,3 +171,42 @@ algorithm max_product_of_three(v):
 
     return res
 ```
+## Pseudo Code for 3rd Algo : 
+
+```
+function get_max(a, b):
+   res = 0
+
+   if a > b:
+       res = a
+   else:
+       res = b
+
+   return res
+
+algorithm max_product_of_three(v, first=0, second=1, third=2, combinations={}):
+    if v.size() < 3:
+        return 1
+
+    key = to_string(first) + to_string(second) + to_string(third)
+    if key is in combinations:
+        return combinations[key]
+
+    curMax = INT_MIN
+    maxCurrentProduct = v[first] * v[second] * v[third]
+    curMax = get_max(curMax, maxCurrentProduct)
+
+    if third + 1 != v.size():
+        value = max_product_of_three(v, first, second, third + 1, combinations)
+        curMax = get_max(curMax, value)
+    if second + 1 != third and second + 1 != v.size():
+        value = max_product_of_three(v, first, second + 1, third, combinations)
+        curMax = get_max(curMax, value)
+    if first + 1 != second and first + 1 != v.size():
+        value = max_product_of_three(v, first + 1, second, third, combinations)
+        curMax = get_max(curMax, value)
+
+    combinations[key] = curMax
+
+    return curMax
+```
