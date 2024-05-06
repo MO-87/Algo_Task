@@ -41,6 +41,7 @@ int main() {
     return 0;
 }
 ```
+
 ## 2nd Algorithm Explanation: Maximum Product of Three Numbers (#2)
 
 This algorithm aims to find the maximum product that can be obtained by multiplying three integers from a given vector `v`.
@@ -78,3 +79,57 @@ int main() {
     cout << "Maximum Product of Three Numbers: " << maxProduct << endl;
     return 0;
 }
+```
+
+## Algorithm Explanation: Maximum Product of Three Numbers (Using Recursion)
+
+This algorithm aims to find the maximum product that can be obtained by multiplying three integers from a given vector `v` using a recursive approach.
+
+### Functions:
+
+1. **get_max:** This function takes two integers `a` and `b` as input and returns the maximum of the two.
+
+2. **max_product_of_three:** This function calculates the maximum product of three numbers from the input vector `v` using recursion.
+
+### Algorithm Steps:
+
+1. **Base Case:** If the size of the input vector `v` is less than 3, the function returns 1, as it's not possible to find a product with less than three numbers.
+
+2. **Check Combinations:** Before computing the product for a combination of indices (represented by `first`, `second`, and `third`), the function checks if this combination has already been computed. This optimization avoids redundant calculations.
+
+3. **Calculate Current Product:** The function computes the product of the three elements at indices `first`, `second`, and `third`.
+
+4. **Update Maximum Product:** It compares the current maximum product (`curMax`) with the newly calculated product and updates `curMax` if necessary using the `get_max` function.
+
+5. **Recursive Calls:** The function makes recursive calls to explore different combinations by incrementing indices `first`, `second`, and `third` appropriately.
+
+6. **Store Computed Values:** After computing the maximum product for a combination, the function stores the result in an unordered map (`combinations`) to avoid recalculating it for the same combination.
+
+7. **Return Maximum Product:** Finally, the function returns the maximum product found.
+
+### Complexity Analysis:
+
+- **Time Complexity:** The time complexity of this algorithm is exponential, specifically O(3^n), where 'n' is the size of the input vector `v`. This is because at each step of the recursion, there are three recursive calls exploring different combinations, leading to a total of 3^n recursive calls. Despite the memoization of computed combinations, the total number of recursive calls remains exponential.
+
+- **Space Complexity:** The space complexity is O(n) due to the space used by the unordered map `combinations` to store computed combinations.
+
+### Example Usage:
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+// Function declarations
+int get_max(int a, int b);
+int max_product_of_three(vector<int> v, int first = 0, int second = 1, int third = 2, unordered_map<string, int> combinations = {});
+
+int main() {
+    // Example usage
+    vector<int> nums = {1, 2, 3, 4, 5};
+    int maxProduct = max_product_of_three(nums);
+    cout << "Maximum Product of Three Numbers: " << maxProduct << endl;
+    return 0;
+}
+```
